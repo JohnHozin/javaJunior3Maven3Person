@@ -8,19 +8,26 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.ZonedDateTime;
+import java.util.ArrayList;
 
 public class ApiPerson {
-    public Person getApiPersonFromRequest() throws IOException, InterruptedException {
-        HttpClient httpClient = HttpClient.newHttpClient();
-        HttpRequest request = HttpRequest.newBuilder().uri(URI.
-                create("https://randomuser.me/api")).build();
-        HttpResponse<String> response = httpClient.send(request,
-                HttpResponse.BodyHandlers.ofString());
+    public ArrayList<Person> getApiPersonFromRequest(int col) throws IOException, InterruptedException {
 
-        return parcePersonRespon(response);
+        ArrayList<Person> persons = new ArrayList<>();
+
+        for (int i = 0; i < col; i++) {
+            HttpClient httpClient = HttpClient.newHttpClient();
+            HttpRequest request = HttpRequest.newBuilder().uri(URI.
+                    create("https://randomuser.me/api")).build();
+            HttpResponse<String> response = httpClient.send(request,
+                    HttpResponse.BodyHandlers.ofString());
+
+            persons.add(parcePersonRespon(response.body()));
+        }
+        return persons;
     }
 
-    public Person parcePersonRespon(HttpResponse<String> response){
+    public Person parcePersonRespon(String response) {
         Person person = new Person();
 
         JSONObject fullData = new JSONObject(response).
@@ -34,7 +41,6 @@ public class ApiPerson {
         ZonedDateTime zonedDateTime = ZonedDateTime.parse(fullData.getJSONObject("dob").
                 getString("date"));
         person.setDob(zonedDateTime.toLocalDateTime());
-
 
 
         return person;
