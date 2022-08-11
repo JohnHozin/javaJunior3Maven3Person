@@ -1,6 +1,5 @@
 package patPerson;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -15,7 +14,7 @@ public class MainDZ {
         ApiPerson apiPerson = new ApiPerson();
         ArrayList<Person> persons = new ArrayList<>();
         try {
-            persons = apiPerson.getApiPersonFromRequest(20);
+            persons = apiPerson.getApiPersonFromRequest(50);
             System.out.println(persons);
         } catch (Exception e) {
             e.printStackTrace();
@@ -29,11 +28,11 @@ public class MainDZ {
         PersonSort.filterCountry(persons, c -> c.getCountry().equals(country));
 
         System.out.println();
-        System.out.println("Введите количество людей:");
-        Integer countPeople = scanner.nextInt();
         System.out.println("Введите город:");
         String city = scanner.nextLine();
+        System.out.println("Введите количество людей:");
+        Integer countPeople = scanner.nextInt();
 
-        PersonSort.filterCity(persons, c -> c.getCity().equals(city), countPeople);
+        PersonSort.filterCity(persons, d -> d.getCity().equals(city), countPeople);
     }
 }
