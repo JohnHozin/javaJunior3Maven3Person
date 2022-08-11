@@ -41,7 +41,7 @@ public class ApiPerson {
         ZonedDateTime zonedDateTime = ZonedDateTime.parse(fullData.getJSONObject("dob").
                 getString("date"));
         person.setDob(zonedDateTime.toLocalDateTime());
-
+        person.setCity(fullData.getJSONObject("location").getString("city"));
 
         return person;
     }

@@ -11,6 +11,8 @@ public class Person {
     private String email;
     private LocalDateTime dob;
 
+    private String city;
+
     public Person() {
     }
 
@@ -21,6 +23,16 @@ public class Person {
         this.country = country;
         this.email = email;
         this.dob = dob;
+    }
+
+    public Person(String gender, String firstName, String lastName, String country, String email, LocalDateTime dob, String city) {
+        this.gender = gender;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.country = country;
+        this.email = email;
+        this.dob = dob;
+        this.city = city;
     }
 
     public String getGender() {
@@ -71,17 +83,25 @@ public class Person {
         this.dob = dob;
     }
 
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Person person = (Person) o;
-        return Objects.equals(gender, person.gender) && Objects.equals(firstName, person.firstName) && Objects.equals(lastName, person.lastName) && Objects.equals(country, person.country) && Objects.equals(email, person.email) && Objects.equals(dob, person.dob);
+        return Objects.equals(gender, person.gender) && Objects.equals(firstName, person.firstName) && Objects.equals(lastName, person.lastName) && Objects.equals(country, person.country) && Objects.equals(email, person.email) && Objects.equals(dob, person.dob) && Objects.equals(city, person.city);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(gender, firstName, lastName, country, email, dob);
+        return Objects.hash(gender, firstName, lastName, country, email, dob, city);
     }
 
     @Override
@@ -93,6 +113,7 @@ public class Person {
                 ", country='" + country + '\'' +
                 ", email='" + email + '\'' +
                 ", dob=" + dob +
+                ", city='" + city + '\'' +
                 '}' + "\n";
     }
 }

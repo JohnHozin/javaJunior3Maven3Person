@@ -30,6 +30,6 @@ public class Main {
 //            return LocalDateTime.now().getYear() - person.getDob().getYear() > 40;
 //        });
 
-        PersonSort.filter(persons,q ->LocalDateTime.now().getYear() - q.getDob().getYear() > 40);
+        PersonSort.filter(persons, q -> LocalDateTime.now().getYear() - q.getDob().getYear() > 40);
     }
 }
