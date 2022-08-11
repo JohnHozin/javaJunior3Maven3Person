@@ -31,7 +31,7 @@ public class MainDZ {
         System.out.println("Введите город:");
         String city = scanner.nextLine();
         System.out.println("Введите количество людей:");
-        Integer countPeople = scanner.nextInt();
+        int countPeople = scanner.nextInt();
 
         PersonSort.filterCity(persons, d -> d.getCity().equals(city), countPeople);
     }

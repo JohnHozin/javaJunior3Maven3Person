@@ -25,7 +25,6 @@ public class PersonSort {
                     proverkaCount=0;
                 }
             }
-
         }
         if (proverkaCount > 0){
             System.out.println("Недостаточно людей, проживающих в данном городе");
